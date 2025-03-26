@@ -1,2 +1,5 @@
-some:
-  property: default profile
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server

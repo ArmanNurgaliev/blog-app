@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-users-table
+      author: Arman Nurgaliev
+      comment: Creating users table
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: users
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: login
+                  type: VARCHAR(50)
+                  constraints:
+                    unique: true
+                    nullable: true
+              - column:
+                  name: first_name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: middle_name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: last_name
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: mobile
+                  type: VARCHAR(15)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: password
+                  type: VARCHAR
+                  constraints:
+                    nullable: false
+              - column:
+                  name: registered_at
+                  type: DATETIME
+                  constraints:
+                    nullable: false
+              - column:
+                  name: intro
+                  type: TINYTEXT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: profile
+                  type: TEXT
+                  constraints:
+                    nullable: true

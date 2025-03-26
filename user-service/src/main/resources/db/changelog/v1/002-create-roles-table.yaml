@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-roles-table
+      author: Arman Nurgaliev
+      comment: Creating role table
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: role
+      changes:
+        - createTable:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+
+
+        - createTable:
+            tableName: user_role
+            columns:
+              - column:
+                  name: user_id
+                  type: UUID
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_role_user
+                    referencedTableName: users
+                    referencedColumnNames: id
+                    deleteCascade: true
+              - column:
+                  name: role_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_user_role_role
+                    referencedTableName: role
+                    referencedColumnNames: id

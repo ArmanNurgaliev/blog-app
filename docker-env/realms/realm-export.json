@@ -1,0 +1,120 @@
+{
+  "id" : "dfb99f1a-54b3-4bce-b30d-02917107b5bf",
+  "realm" : "blog-app-realm",
+  "enabled" : true,
+  "loginWithEmailAllowed" : true,
+  "roles" : {
+    "realm" : [ {
+      "id" : "aa40de08-2b35-4379-976e-e12107c1e888",
+      "name" : "ROLE_USER",
+      "description" : "",
+      "composite" : false,
+      "clientRole" : false,
+      "containerId" : "dfb99f1a-54b3-4bce-b30d-02917107b5bf",
+      "attributes" : { }
+    }, {
+      "id" : "f23991ed-01c6-464a-8b78-bd50f1f47ba6",
+      "name" : "ROLE_MANAGER",
+      "description" : "",
+      "composite" : false,
+      "clientRole" : false,
+      "containerId" : "dfb99f1a-54b3-4bce-b30d-02917107b5bf",
+      "attributes" : { }
+    }, {
+      "id" : "7934f0e2-5e14-4985-9b47-9a4d1662e724",
+      "name" : "ROLE_ADMIN",
+      "description" : "",
+      "composite" : false,
+      "clientRole" : false,
+      "containerId" : "dfb99f1a-54b3-4bce-b30d-02917107b5bf",
+      "attributes" : { }
+    } ]
+  },
+  "groups" : [ ],
+  "users" : [ {
+    "id" : "1f5c25d3-a7a6-43f6-b741-ea8c83f5ae77",
+    "username" : "service-account-blog-gateway-client",
+    "emailVerified" : false,
+    "createdTimestamp" : 1742281572469,
+    "enabled" : true,
+    "totp" : false,
+    "serviceAccountClientId" : "blog-gateway-client",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-blog-app-realm" ],
+    "clientRoles" : {
+      "realm-management" : [ "manage-users", "query-users", "manage-realm" ],
+      "blog-gateway-client" : [ "uma_protection" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ],
+  "scopeMappings" : [ {
+    "clientScope" : "offline_access",
+    "roles" : [ "offline_access" ]
+  } ],
+  "clientScopeMappings" : {
+    "account" : [ {
+      "client" : "account-console",
+      "roles" : [ "manage-account", "view-groups" ]
+    } ]
+  },
+  "clients" : [
+    {
+    "id" : "1490cfa4-23a7-4979-b93e-bd7b6c1ca645",
+    "clientId" : "blog-gateway-client",
+    "name" : "blog-gateway-client",
+    "description" : "",
+    "rootUrl" : "http://localhost:8080",
+    "adminUrl" : "http://localhost:8080",
+    "baseUrl" : "http://localhost:8080/*",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "qFhGH5UEzXxlJDVDDdKmXbMSSTL7yvYy",
+    "redirectUris" : [ "http://localhost:8080/*" ],
+    "webOrigins" : [ "http://localhost:8080" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : true,
+    "serviceAccountsEnabled" : true,
+    "authorizationServicesEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "realm_client" : "false",
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1742281572",
+      "backchannel.logout.session.required" : "true",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "service_account", "acr", "profile", "roles", "basic", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "organization", "offline_access", "microprofile-jwt" ],
+    "authorizationSettings" : {
+      "allowRemoteResourceManagement" : true,
+      "policyEnforcementMode" : "ENFORCING",
+      "resources" : [ {
+        "name" : "Default Resource",
+        "type" : "urn:blog-gateway-client:resources:default",
+        "ownerManagedAccess" : false,
+        "attributes" : { },
+        "uris" : [ "/*" ]
+      } ],
+      "scopes" : [ ],
+      "decisionStrategy" : "UNANIMOUS"
+    }
+    }],
+  "clientPolicies" : {
+    "policies" : [ ]
+  }
+}

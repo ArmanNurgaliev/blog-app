@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-insert-tags
+      author: Arman Nurgaliev
+      comment: Inserting tags
+      changes:
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'Technology'
+              - column:
+                  name: description
+                  value: 'Topics related to the latest tech trends, software, gadgets, and innovations'
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: 'Programming'
+              - column:
+                  name: description
+                  value: 'Tutorials, coding best practices, and software development tips'
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: 'Finance'
+              - column:
+                  name: description
+                  value: 'Investment strategies, budgeting, and personal finance advice'
+        - insert:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: name
+                  value: 'Lifestyle'
+              - column:
+                  name: description
+                  value: 'Personal development, travel, fitness, and wellness topics'
+

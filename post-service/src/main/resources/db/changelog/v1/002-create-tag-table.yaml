@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-tags-table
+      author: Arman Nurgaliev
+      comment: Creating tag table
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: tag
+      changes:
+        - createTable:
+            tableName: tag
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(50)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(150)
+
+
+        - createTable:
+            tableName: post_tag
+            columns:
+              - column:
+                  name: post_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_post_tag_post
+                    referencedTableName: post
+                    referencedColumnNames: id
+                    deleteCascade: true
+              - column:
+                  name: tag_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_post_tag_tag
+                    referencedTableName: tag
+                    referencedColumnNames: id
+                    deleteCascade: true

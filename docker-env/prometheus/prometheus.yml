@@ -1,0 +1,18 @@
+global:
+  scrape_interval: 3s
+
+scrape_configs:
+  - job_name: 'post-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['post-service:8081', 'host.docker.internal:8081']  # Replace with your actual service name and port
+
+  - job_name: 'comment-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['comment-service:8082', 'host.docker.internal:8082']
+
+  - job_name: 'user-service'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['user-service:8083', 'host.docker.internal:8083']

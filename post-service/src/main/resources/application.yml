@@ -1,0 +1,51 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: post-service
+
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/blog-post-service
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        ddl-auto: none
+    show-sql: true
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${JWT_ISSUER_HOST:localhost}:8080/realms/blog-app-realm
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_URI:localhost}:8761/eureka
+  instance:
+    preferIpAddress: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+
+#  main:
+#    web-application-type: servlet
+logging:
+  logstash:
+    url: http://loki:3100/loki/api/v1/push
+#  config:
+#    classpath: log4j2.xml
+
+loki:
+  host: http://${LOKI_HOST:localhost}:3100/loki/api/v1/push

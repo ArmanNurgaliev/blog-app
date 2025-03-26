@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/ArmanNurgaliev/blog-app/tree/main/config-repo
+          default-label: main
+          clone-on-start: true
+          force-pull: true
+#          skip-ssl-validation: true
+#          username: blog-config-server-token
+#          password: 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

@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-insert-roles
+      author: Arman Nurgaliev
+      comment: Inserting roles
+      changes:
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: 'ROLE_ADMIN'
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: 'ROLE_MANAGER'
+        - insert:
+            tableName: role
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: 'ROLE_USER'

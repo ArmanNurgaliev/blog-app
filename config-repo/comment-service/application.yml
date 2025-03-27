@@ -3,3 +3,5 @@ server:
 spring:
   application:
     name: config-server
+some:
+  propetry: Hello guys!

@@ -4,3 +4,5 @@ spring:
 kafka:
   bootstrap:
     server: ${KAFKA_SERVER}
+some:
+  propetry: Hello guys!

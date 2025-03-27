@@ -23,6 +23,11 @@ public class GlobalExceptionHandlerImpl {
         return ResponseEntity.badRequest().body(errorResponseBuilder(e, request));
     }
 
+    @ExceptionHandler({PostFetchingException.class})
+    public ResponseEntity<ErrorResponse> postFetchingException(RuntimeException e, HttpServletRequest request) {
+        return ResponseEntity.badRequest().body(errorResponseBuilder(e, request));
+    }
+
     @ExceptionHandler({CommentNotFoundException.class})
     public ResponseEntity<ErrorResponse> handleNotFoundException(RuntimeException e, HttpServletRequest request) {
         return new ResponseEntity<>(errorResponseBuilder(e, request), HttpStatus.NOT_FOUND);

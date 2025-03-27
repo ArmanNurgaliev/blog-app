@@ -1,5 +1,6 @@
 package ru.arman.commentservice.kafka;
 
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,13 +25,17 @@ public class KafkaProducer {
 
     public void sendNotification(JwtAuthenticationToken principal, Long postId, String content) {
         String login = (String) principal.getTokenAttributes().get("preferred_username");
-
-        UsersData usersNameAndEmail = postFeignClient.getUsersNameAndEmail(postId);
+        UsersData usersNameAndEmail = new UsersData("", "");
+        try {
+            usersNameAndEmail = postFeignClient.getUsersNameAndEmail(postId);
+        } catch (FeignException e) {
+            log.error("Error fetching data from post-service: {}", e.getMessage());
+        }
 
         CommentNotificationDto commentNotificationDto = new CommentNotificationDto(usersNameAndEmail.email(), usersNameAndEmail.name(), login, content);
 
         try {
-            CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topicName, commentNotificationDto);;
+            CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send(topicName, commentNotificationDto);
             future.whenComplete((result, ex) -> {
                 if (ex == null) {
                     log.info("Sent message=[{} with offset=[{}]", commentNotificationDto, result.getRecordMetadata().offset());

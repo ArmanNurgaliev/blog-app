@@ -7,12 +7,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/blog-app/config-repo.git
+          uri: https://github.com/ArmanNurgaliev/blog-app.git
           default-label: main
-          clone-on-start: true
-          force-pull: true
           username: config-server
           password: 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
-
-  profiles:
-    active: native
+          searchPaths:
+            - 'config-repo/{application}'
+            - 'config-repo/common'

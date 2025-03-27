@@ -1,9 +1,9 @@
 server:
-  port: 8085
+  port: ${SERVER_PORT}
 
 spring:
   application:
-    name: gateway-service
+    name: ${SERVICE_NAME}
   cloud:
     gateway:
       default-filters:
@@ -30,8 +30,8 @@ spring:
       client:
         registration:
           keycloak:
-            client-id: ${CLIENT_ID:blog-gateway-client}
-            client-secret: ${CLIENT_SECRET:qFhGH5UEzXxlJDVDDdKmXbMSSTL7yvYy}
+            client-id: ${CLIENT_ID}
+            client-secret: ${CLIENT_SECRET}
             authorization-grant-type: authorization_code
             scope:
               - openid
